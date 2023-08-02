@@ -22,7 +22,7 @@ class chatglm_ptuing:
         self.route = "../THUDM/chatglm2-6b"
         self.ptuingRoute = "../ptuning/output/adgen-chatglm2-6b-pt-128-2e-2/checkpoint-3000"
         self.tokenizer = AutoTokenizer.from_pretrained(self.route, trust_remote_code=True)
-        self.config = config = AutoConfig.from_pretrained(self.route, trust_remote_code=True, pre_seq_len=128)
+        self.config = AutoConfig.from_pretrained(self.route, trust_remote_code=True, pre_seq_len=128)
         self.model = AutoModel.from_pretrained(self.route, config=self.config, trust_remote_code=True).cuda()
         self.prefix_state_dict = torch.load(os.path.join(self.ptuingRoute, "pytorch_model.bin"))
         self.new_prefix_state_dict = {}
