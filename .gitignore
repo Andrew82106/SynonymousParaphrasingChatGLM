@@ -1,1 +1,4 @@
 THUDM/chatglm2-6b
+ptuning/output/adgen-chatglm2-6b-pt-128-2e-2/checkpoint-1000
+ptuning/output/adgen-chatglm2-6b-pt-128-2e-2/checkpoint-2000
+ptuning/output/adgen-chatglm2-6b-pt-128-2e-2/checkpoint-3000
