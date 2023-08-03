@@ -26,11 +26,18 @@ def evaluate(InputTextList):
     resLst = []
     for i in tqdm.tqdm(InputTextList):
         resLst.append([i, getSimi(i)])
+        with open("./ResSimilarity.txt", 'w', encoding='utf-8') as f:
+            f.write(str(resLst))
     x = Paddlesimilarity()
-    print(x.likelyHood("我今晚在酒店吃了一顿牛排", "今晚我在酒店享用了一顿美味的牛排餐。"))
     simiRes = []
+    cnt = 0
     for i in tqdm.tqdm(resLst):
         simiRes.append(x.likelyHood(i[0], i[1]))
+        cnt += 1
+        if cnt % 20 == 0:
+            print(f"[Evaluate] average similarity at present is: {sum(simiRes)/len(simiRes)}")
+        with open("./similarity.txt", 'w', encoding='utf-8') as f:
+            f.write(str(simiRes))
     print(f"maxSimi={max(simiRes)} minSimi={min(simiRes)} avgSimi={sum(simiRes)/len(simiRes)}")
 
 

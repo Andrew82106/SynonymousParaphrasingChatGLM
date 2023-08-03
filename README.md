@@ -4,20 +4,53 @@
 
 基于微调实现同义转述的chatGLM
 
-实现效果为，对于一段输入的文本，输出文本为对输入文本的复述，复述相似度达到70%以上
+实现效果为，对于一段输入的文本，输出文本为对输入文本的复述
 
 ## usage
 
-首先根据chatGLM的配置方式配置好chatGLM模型
+本项目默认使用ChatGLM2-6B模型，因此此时下载ChatGLM2-6B模型权重文件
 
-## ptuning data
+从 Hugging Face Hub 下载模型需要先[安装Git LFS](https://docs.github.com/zh/repositories/working-with-files/managing-large-files/installing-git-large-file-storage)，然后运行
 
-in file ``SynonymousParaphrasing.json``
+``git clone https://huggingface.co/THUDM/chatglm2-6b``
 
-### how to get data for ptuning?
+如果你从 Hugging Face Hub 上下载 checkpoint 的速度较慢，可以只下载模型实现
 
-use the prompt to GPT3:
+``GIT_LFS_SKIP_SMUDGE=1 git clone https://huggingface.co/THUDM/chatglm2-6b``
+
+将下载好的模型实现（chatglm2-6b文件夹）中的内容放到本项目的THUDM/chatglm2-6b文件夹下
+
+然后从这里手动下载模型参数文件，并将下载的文件替换到本项目的THUDM/chatglm2-6b文件夹下
+
+
+
+## ptuning
+
+### ptuning data
+
+在文件``workspace/SynonymousParaphrasing.json``中
+
+#### how to get data for ptuning?
+
+对chatGPT3使用如下提示词:
 
 ``用中文给我生成一句话，长度大于70字，然后为这句话生成19句同义句，然后将这20句话放在一个python列表里面输出``
 
-repeat it and you will get enough data
+不断地重复就可以得到足够的训练数据
+
+### ptuning process
+
+首先根据chatGLM的配置方式配置好chatGLM模型([repo link](https://github.com/THUDM/ChatGLM2-6B))
+
+按照chatGLM模型的readme指导，调整``ptuning``文件夹下的``train.sh``中的部分行，如下所示：
+
+```shell
+    --train_file SynonymousParaphrasingDataset/train.json \
+    --validation_file SynonymousParaphrasingDataset/test.json \
+    
+    --prompt_column input \
+    --response_column output \
+    
+```
+
+然后运行命令``bash train.sh``即可。
