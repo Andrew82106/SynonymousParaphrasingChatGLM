@@ -2,6 +2,11 @@ from Utils.loadTmodel import chatglm_ptuing
 from paddlenlp import Taskflow
 import tqdm
 
+with open("./qingbao.txt", "r", encoding='utf-8') as f:
+    x = f.read()
+    lst = x.split("\n")
+    print(len(lst))
+
 model = chatglm_ptuing()
 
 
@@ -30,6 +35,4 @@ def evaluate(InputTextList):
 
 
 if __name__ == '__main__':
-    with open("./qingbao.txt", "r", encoding='utf-8') as f:
-        x = f.read()
-        print(x)
+    evaluate(lst)

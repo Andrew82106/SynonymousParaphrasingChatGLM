@@ -8,7 +8,7 @@ sentencepiece~=0.1.99
 accelerate~=0.21.0
 sse-starlette
 
-numpy~=1.25.1
+numpy
 jieba~=0.42.1
 datasets~=2.14.0
 tqdm~=4.65.0
