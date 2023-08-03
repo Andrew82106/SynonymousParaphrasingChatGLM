@@ -7,7 +7,6 @@ mdtex2html~=1.2.0
 sentencepiece~=0.1.99
 accelerate~=0.21.0
 sse-starlette
-
 numpy
 jieba~=0.42.1
 datasets~=2.14.0
