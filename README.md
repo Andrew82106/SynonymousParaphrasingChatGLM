@@ -62,9 +62,9 @@
 
 我们使用paddle的文本相似度和余弦相似度两种相似度度量方法进行了计算，结果如下：
 
-![simi_bert.jpg](simi_bert.png)
+![simi_bert.jpg](workspace/simi_bert.png)
 
-![simi_paddle.jpg](simi_paddle.png)
+![simi_paddle.jpg](workspace/simi_paddle.png)
 
 - demo:
 
