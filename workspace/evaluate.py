@@ -1,5 +1,5 @@
 from Utils.loadTmodel import chatglm_ptuing
-# from paddlenlp import Taskflow
+from paddlenlp import Taskflow
 import tqdm
 import os
 import json
@@ -19,14 +19,14 @@ def getSimi(TextIn, model):
         res += model.response(textIn=i)[0]
     return res
 
-"""
+
 class Paddlesimilarity:
     def __init__(self):
         self.similarity = Taskflow("text_similarity")
 
     def likelyHood(self, text1, text2):
         return self.similarity([[text1, text2]])[0]['similarity']
-"""
+
 
 
 class Bertsimilarity:
@@ -68,8 +68,8 @@ def evaluate(InputTextList):
             resLst.append([i, getSimi(i, model)])
             with open("./ResSimilarity.txt", 'w', encoding='utf-8') as f:
                 f.write(str(resLst))
-    # x = Paddlesimilarity()
-    x = Bertsimilarity()
+    x = Paddlesimilarity()
+    # x = Bertsimilarity()
     simiRes = []
     cnt = 0
     for i in tqdm.tqdm(resLst):
