@@ -10,6 +10,8 @@
 
 ## usage
 
+### step1 下载ChatGLM基础文件
+
 首先根据requirements.txt安装所需库。除了requirements.txt外，还需要根据系统cuda版本安装对应的[paddle](https://www.paddlepaddle.org.cn/install/quick?docurl=/documentation/docs/zh/install/pip/linux-pip.html)
 
 本项目默认使用ChatGLM2-6B模型，因此此时下载ChatGLM2-6B模型权重文件
@@ -26,6 +28,17 @@
 
 然后从这里手动下载模型参数文件，并将下载的文件替换到本项目的``workspace/THUDM/chatglm2-6b``文件夹下
 
+### step2 下载微调文件
+
+从[huggingface](https://huggingface.co/Andrew82106/ChatGLMWithSynonymousParaphrasing)上将微调模型文件克隆到本地，然后本项目中的output文件夹替换为克隆文件中的output文件夹
+
+### step3 调用微调模型
+
+在workspace目录下创建python脚本，使用：
+
+``from Utils.loadTmodel import chatglm_ptuing``
+
+即可调用微调模型
 
 ## ptuning
 
