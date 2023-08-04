@@ -75,11 +75,11 @@
 
 对我们使用威胁情报数据集作为输入，使用paddle的文本相似度方法进行了计算，结果如下：
 
-![simi_paddle_old.jpg](workspace/simi_paddle.png)
+![simi_paddle_old.jpg](workspace/simi_paddle_old.png)
 
 一开始默认的处理流程是将文本整体性输入，直接获取整个文本的转述。当修改了处理流程，将文本按句号分句后依次处理后，paddle文本相似度接口评测结果如下：
 
-![simi_paddle.jpg](workspace/simi_bert.png)
+![simi_paddle_old.jpg](workspace/simi_paddle.png)
 
 对改进后的方法使用Bert模型和余弦相似度指标评测结果如下：
 
